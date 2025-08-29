@@ -52,7 +52,7 @@ fred-pipeline/
 ```bash
 git clone https://github.com/janedoe7/fred-pipeline.git
 cd fred-pipeline
-
+```
 2. **Create and activate a virtual environment**
 
 ```bash

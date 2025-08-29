@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+config/settings.env
+data/*.db
+data/*.csv
+data/*.png

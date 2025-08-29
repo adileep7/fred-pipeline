@@ -63,11 +63,14 @@ source venv/bin/activate   # On Windows use: .\venv\Scripts\activate
 pip install -r requirements.txt
 ```
 4. **Configure environment variables**
+```bash
 cp config/settings_example.env config/settings.env
--Edit config/settings.env and replace <YOUR_API_KEY> with your actual FRED API key.
 ```
+-Edit config/settings.env and replace <YOUR_API_KEY> with your actual FRED API key.
 5. **Run the ETL pipeline**
+```bash
 python fred_pipeline.py
+```
 -This will create a data/ directory with:
   -econ.db SQLite database
   -CSV reports (history.csv, indicators.csv)

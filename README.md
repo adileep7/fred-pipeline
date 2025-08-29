@@ -58,14 +58,14 @@ cd fred-pipeline
 ```bash
 python3 -m venv venv
 source venv/bin/activate   # On Windows use: .\venv\Scripts\activate
-
+```
 3. **Install dependencies**
 pip install -r requirements.txt
-
+```
 4. **Configure environment variables**
 cp config/settings_example.env config/settings.env
 -Edit config/settings.env and replace <YOUR_API_KEY> with your actual FRED API key.
-
+```
 5. **Run the ETL pipeline**
 python fred_pipeline.py
 -This will create a data/ directory with:

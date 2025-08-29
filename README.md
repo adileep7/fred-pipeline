@@ -26,25 +26,6 @@ A small, end-to-end data engineering project that builds an ETL pipeline for U.S
 - Python 3.9+
 - A free FRED API key (get one: https://fred.stlouisfed.org/docs/api/api_key.html)
 
-## Project Structure
-
-fred-pipeline/
-│
-├── README.md
-├── requirements.txt
-├── .gitignore
-│
-├── fred_pipeline.py # Main ETL script
-├── config/
-│ └── settings_example.env # Example environment variables file
-├── data/ # Output directory (created after running)
-│ ├── econ.db # SQLite database with data
-│ ├── history.csv # Full historical time series data
-│ ├── indicators.csv # Latest snapshot with MoM/YoY calculations
-│ └── indicators.png # Visualization of key economic indicators
-└── docs/
-└── architecture.png # Optional diagram of pipeline architecture
-
 ## Setup Instructions
 
 1. **Clone the repository**

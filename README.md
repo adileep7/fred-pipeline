@@ -26,16 +26,48 @@ A small, end-to-end data engineering project that builds an ETL pipeline for U.S
 - Python 3.9+
 - A free FRED API key (get one: https://fred.stlouisfed.org/docs/api/api_key.html)
 
-### 1) Clone and set up
+## Project Structure
+
+fred-pipeline/
+│
+├── README.md
+├── requirements.txt
+├── .gitignore
+│
+├── fred_pipeline.py # Main ETL script
+├── config/
+│ └── settings_example.env # Example environment variables file
+├── data/ # Output directory (created after running)
+│ ├── econ.db # SQLite database with data
+│ ├── history.csv # Full historical time series data
+│ ├── indicators.csv # Latest snapshot with MoM/YoY calculations
+│ └── indicators.png # Visualization of key economic indicators
+└── docs/
+└── architecture.png # Optional diagram of pipeline architecture
+
+## Setup Instructions
+
+1. **Clone the repository**
+
 ```bash
-git clone https://github.com/<your-username>/fred-pipeline.git
+git clone https://github.com/janedoe7/fred-pipeline.git
 cd fred-pipeline
 
-python -m venv venv
-# mac/linux
-source venv/bin/activate
-# windows (PowerShell)
-# .\venv\Scripts\Activate.ps1
+2. **Create and activate a virtual environment** 
+python3 -m venv venv
+source venv/bin/activate   # On Windows use: .\venv\Scripts\activate
 
+3. **Install dependencies**
 pip install -r requirements.txt
+
+4. **Configure environment variables**
+cp config/settings_example.env config/settings.env
+-Edit config/settings.env and replace <YOUR_API_KEY> with your actual FRED API key.
+
+5. **Run the ETL pipeline**
+python fred_pipeline.py
+-This will create a data/ directory with:
+  -econ.db SQLite database
+  -CSV reports (history.csv, indicators.csv)
+  -A plot image (indicators.png)
 

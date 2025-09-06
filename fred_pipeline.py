@@ -46,7 +46,10 @@ def fetch_observations(series_id, start=START, end=END):
         return obs
     obs = obs[["date", "value"]].rename(columns={"date": "obs_date"})
     obs["series_id"] = series_id
+    # Convert '.' to NA, then to numeric NaN
     obs["value"] = pd.to_numeric(obs["value"].replace(".", pd.NA), errors="coerce")
+    # Handle missing values by forward-fill then backward-fill
+    obs["value"] = obs["value"].fillna(method="ffill").fillna(method="bfill")
     obs["obs_date"] = pd.to_datetime(obs["obs_date"]).dt.date
     return obs[["series_id", "obs_date", "value"]]
 
@@ -171,4 +174,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

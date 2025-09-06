@@ -24,7 +24,7 @@ Economic analysts often need to monitor inflation, unemployment, and interest ra
 
 ---
 ## 🏗️ Architecture Design
-![Architecture Diagram](images/Architecture_screenshot.png)
+![Architecture Diagram](images/fred_pipeline_architecture.png)
 
 ---
 ## 🛠️ Tools & Rationale

@@ -19,14 +19,57 @@ A small, end-to-end data engineering project that builds an ETL pipeline for U.S
   - `history.csv`, `indicators.csv`, and `indicators.png`
 
 ---
+## 💼 Business Use Case
+Economic analysts often need to monitor inflation, unemployment, and interest rates over time. Manual downloads from the FRED website are slow and error-prone. This pipeline automates ingestion, transformation, and storage of these indicators, making them ready for analysis and visualization.
 
-## 📦 Quick Start
+---
+## 🏗️ Architecture Design
+┌────────────┐
+│  FRED API  │
+└────┬───────┘
+     │
+     ▼
+┌────────────────────────────┐
+│     Extract (Python)       │
+│  - requests library        │
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│    Transform (pandas)      │
+│  - Clean & format data     │
+│  - Calculate MoM / YoY     │
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│ Load                       │
+│ - SQLite DB                │
+│ - CSV / Parquet files      │
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│ Visualize                  │
+│ - Matplotlib charts        │
+└────────────────────────────┘
+
+---
+## 🛠️ Tools & Rationale
+- **Python**: for scripting ETL logic and transformations.
+- **requests**: to fetch data securely via API.
+- **pandas**: for MoM/YoY calculations and data cleaning.
+- **SQLite**: lightweight relational DB, quick local analytics.
+- **Matplotlib**: simple data visualization for end-users.
+- **dotenv**: for key management and reproducibility.
+---
+## 📦 How to Run
 
 ### Prerequisites
 - Python 3.9+
 - A free FRED API key (get one: https://fred.stlouisfed.org/docs/api/api_key.html)
 
-## Setup Instructions
+## Instructions
 
 1. **Clone the repository**
 
@@ -52,8 +95,8 @@ cp config/settings_example.env config/settings.env
 5. **Run the ETL pipeline**
 ```bash
 python fred_pipeline.py
--This will create a data/ directory with:
-  -econ.db SQLite database
-  -CSV reports (history.csv, indicators.csv)
-  -A plot image (indicators.png)
+- This will create a `data/` directory with:
+  1. **SQLite database:** `econ.db`
+  2. **CSV reports:** `history.csv`, `indicators.csv`
+  3. **Plot image:** `indicators.png`
 ```

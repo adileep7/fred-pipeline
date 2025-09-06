@@ -96,7 +96,7 @@ cp config/settings_example.env config/settings.env
 ```bash
 python fred_pipeline.py
 - This will create a `data/` directory with:
-  1. **SQLite database:** `econ.db`
-  2. **CSV reports:** `history.csv`, `indicators.csv`
-  3. **Plot image:** `indicators.png`
+  1. SQLite database: `econ.db`
+  2. CSV reports: `history.csv`, `indicators.csv`
+  3. Plot image: `indicators.png`
 ```

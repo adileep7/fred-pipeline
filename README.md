@@ -72,3 +72,13 @@ python fred_pipeline.py
   2. CSV reports: `history.csv`, `indicators.csv`
   3. Plot image: `indicators.png`
 ```
+## ⚔️ Challenges and Solutions
+
+- **Challenge:** FRED API returns series in different granularities (monthly, quarterly).  
+  **Solution:** Normalized frequencies and added date parsing logic before transformations.
+
+- **Challenge:** Initial CSV loads overwrote old runs.  
+  **Solution:** Added idempotent upserts into SQLite to preserve history.
+
+- **Challenge:** Some series had missing values.  
+  **Solution:** Implemented null checks and default handling before loading.
